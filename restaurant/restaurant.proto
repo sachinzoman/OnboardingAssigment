@@ -1,0 +1,35 @@
+syntax="proto3";
+package restaurant;
+
+// The restaurant service defination
+service Restaurant{
+    rpc GetRestaurant(empty_param) returns (stream RestaurantRequest) {};
+    rpc CreateRestaurant(RestaurantRequest) returns (RestaurantResponse) {};
+}
+
+//defining messages used in service
+
+message RestaurantRequest{
+    int32 id = 1;
+    string name = 2;
+    float rating = 3;
+    string cusines = 4;
+    string address = 5;
+    message timing{
+        message time{
+            int32 hr = 1;
+            int32 min = 2; 
+        }
+        time starttime=1;
+        time endtime=2;
+    }
+    timing times = 6;
+    float cft = 7;
+    string img_url = 8;
+}
+
+message RestaurantResponse{
+    string status = 1;
+}
+
+message empty_param {}
