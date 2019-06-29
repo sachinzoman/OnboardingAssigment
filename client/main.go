@@ -57,26 +57,18 @@ func main() {
 
 	client := pb.NewRestaurantClient(conn)
 
-	// restaurant := &pb.RestaurantRequest{
-	// 	Id :  0,
-	// 	Name : "Rajinder Da Dhaba",
-	// 	Rating : 4.1,
-	// 	Cusines : "North Indian, Rolls",
-	// 	Address : "AB-14B, Nauroji Nagar Marg, Opposite, Safdarjung Enclave, New Delhi, Delhi 110029",
-	// 	Times: &pb.RestaurantRequestTiming{
-	// 		Starttime: &pb.RestaurantRequestTimingTime{
-	// 			Hr: 17,
-	// 			Min: 24,
-	// 		},
-	// 		Endtime: &pb.RestaurantRequestTimingTime{
-	// 			Hr: 22,
-	// 			Min: 30,
-	// 		},
-	// 	},
-	// 	Cft : 800,
-	// 	ImgUrl: "https://b.zmtcdn.com/data/pictures/9/7319/e1b7673ed0aa2993b55b177409d5596c.jpg",
-	// }
-	// createRestaurant(client,restaurant)
+	restaurant := &pb.RestaurantRequest{
+		Id:        8,
+		Name:      "Rajinder Da Dhaba - 2",
+		Rating:    4.1,
+		Cusines:   "North Indian, Rolls",
+		Address:   "AB-14B, Nauroji Nagar Marg, Opposite, Safdarjung Enclave, New Delhi, Delhi 110029",
+		Starttime: "08:30:00",
+		Endtime:   "22:00:30",
+		Cft:       800,
+		ImgUrl:    "https://b.zmtcdn.com/data/pictures/9/7319/e1b7673ed0aa2993b55b177409d5596c.jpg",
+	}
+	createRestaurant(client, restaurant)
 
 	// restaurant = &pb.RestaurantRequest{
 	// 	Id :  0,
