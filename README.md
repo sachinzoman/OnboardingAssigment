@@ -7,8 +7,9 @@
 * Communication between user and PHP API having happening using RESTful API i.e HTTP + JSON
 * Communication between PHP API and Golagn Service is happeing using gRPC and Protocol buffer
 
-## PHP setup
-`composer install`
+## Setup
+* `docker-compose build`
+* `docker-compose up`
 
 ## API endpoint
 ### 1. Create restaurant
