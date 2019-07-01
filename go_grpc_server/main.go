@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -20,7 +21,7 @@ import (
 )
 
 const (
-	addr = "localhost:8080"
+	addr = "localhost:4000"
 )
 
 type server struct {
@@ -162,41 +163,21 @@ func (s *server) DeleteRestaurant(ctx context.Context, req *pb.RestaurantRequest
 func main() {
 
 	//setup mysql database
-	db, err := sql.Open("mysql", "jarvis:jarvis123@tcp(0.0.0.0)/restaurantDB")
+	host := "localhost"
+	if os.Getenv("ENV") == "docker" {
+		host = "host.docker.internal"
+	}
+	db, err := sql.Open("mysql", "jarvis:jarvis123@tcp("+host+")/restaurantDB")
 
 	// if there is an error opening the connection, handle it
 	if err != nil {
 		panic(err)
 	}
 
-	res, err := db.Query("select id, name from users where id = ?", 1)
-	if err != nil {
-		log.Fatal(err)
-	}
-	var restaurantId int32
-	var restaurantName string
-	var rating float32
-	var cusines string
-	var address string
-	var startime string
-	var endtime string
-	var cft float32
-	var img_url string
-
-	for res.Next() {
-		err := res.Scan(&restaurantId, &restaurantName, &rating, &cusines, &address, &startime, &endtime, &cft, &img_url)
-		if err != nil {
-			log.Fatal(err)
-			break
-		} else {
-			log.Println(restaurantName)
-		}
-	}
-
 	// defer the close till after the main function has finished
 	defer db.Close()
 
-	lis, err := net.Listen("tcp", addr)
+	lis, err := net.Listen("tcp", ":4000")
 	if err != nil {
 		fmt.Println("Server unable to listen: %v", err)
 	} else {

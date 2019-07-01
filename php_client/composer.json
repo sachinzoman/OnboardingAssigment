@@ -1,14 +1,14 @@
 {
   "name": "grpc/grpc-demo",
-  "description": "gRPC example for PHP",
+  "description": "gRPC for PHP",
   "require": {
     "grpc/grpc": "^v1.3.0",
-    "google/protobuf": "^v3.3.0",
-    "altorouter/altorouter": "1.1.0"
+    "google/protobuf": "^v3.3.0"
   },
   "autoload": {
     "psr-4": {
-      "": "restaurantgen/"
+      "GPBMetadata\\": [ "restaurantgen\\GPBMetadata" ],
+      "Restaurant\\": [ "restaurantgen\\Restaurant" ]
     }
   }
 }

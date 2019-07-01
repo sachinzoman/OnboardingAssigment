@@ -8,7 +8,8 @@ require './vendor/autoload.php';
 // require './Restaurant/RestaurantResponse.php';
 // require './GPBMetadata/Restaurant.php';
 
-$client = new Restaurant\RestaurantClient('localhost:8080',[
+// $docker = getenv("ENV");
+$client = new Restaurant\RestaurantClient(getenv("ENV")==="docker"?'host.docker.internal':"localhost".':4000',[
     'credentials' => Grpc\ChannelCredentials::createInsecure(),
 ]);
 
