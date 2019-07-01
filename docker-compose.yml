@@ -4,11 +4,10 @@ services:
         build:
             context: ./go_grpc_server
         ports:
-            - 8080:8080
-        links:
-        - 'mysql'
+            - 4000:4000
+        # links:
+        # - 'mysql'
         
-
     php_client:
       build:
           context: ./php_client
@@ -16,12 +15,11 @@ services:
           -  3000:80
       links:
           - 'go_grpc_server'
-      restart: unless-stopped
 
-    mysql:
-        image: a1aa4f76fab9
-        environment:
-        - MYSQL_ROOT_PASSWORD=secret
-        restart: unless-stopped
+    # mysql:
+    #     image: a1aa4f76fab9
+    #     environment:
+    #     - MYSQL_ROOT_PASSWORD=secret
+    #     restart: unless-stopped
 
 
