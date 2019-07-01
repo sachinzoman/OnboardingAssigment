@@ -1,0 +1,27 @@
+version: '3'
+services:
+    go_grpc_server:
+        build:
+            context: ./go_grpc_server
+        ports:
+            - 8080:8080
+        links:
+        - 'mysql'
+        
+
+    php_client:
+      build:
+          context: ./php_client
+      ports:
+          -  3000:80
+      links:
+          - 'go_grpc_server'
+      restart: unless-stopped
+
+    mysql:
+        image: a1aa4f76fab9
+        environment:
+        - MYSQL_ROOT_PASSWORD=secret
+        restart: unless-stopped
+
+

@@ -1,1 +1,1 @@
-protoc --proto_path=./protos --php_out=./restaurantgen --grpc_out=./restaurantgen  --plugin=protoc-gen-grpc=/Users/jarvis/grpc/bins/opt/grpc_php_plugin ./protos/restaurant.proto
+mkdir -p restaurantgen && protoc --proto_path=./protos --php_out=./restaurantgen --grpc_out=./restaurantgen  --plugin=protoc-gen-grpc=/usr/local/bin/grpc_php_plugin ./protos/restaurant.proto
