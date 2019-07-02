@@ -18,11 +18,10 @@ RUN docker-php-ext-enable grpc
 RUN docker-php-ext-install bcmath
 
 # RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+ENV ENV docker
+
+EXPOSE 80
 
 COPY . /var/www/html/
 WORKDIR /var/www/html/
 RUN composer install
-
-ENV ENV docker
-
-EXPOSE 80/tcp

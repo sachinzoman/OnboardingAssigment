@@ -9,7 +9,8 @@ require './vendor/autoload.php';
 // require './GPBMetadata/Restaurant.php';
 
 // $docker = getenv("ENV");
-$client = new Restaurant\RestaurantClient(getenv("ENV")==="docker"?'host.docker.internal':"localhost".':4000',[
+// $client = new Restaurant\RestaurantClient(getenv("ENV")==="docker"?'host.docker.internal':"localhost".':4000',[
+$client = new Restaurant\RestaurantClient('host.docker.internal'.':4000',[
     'credentials' => Grpc\ChannelCredentials::createInsecure(),
 ]);
 
@@ -64,7 +65,7 @@ function runCreateRestaurant($client){
 function runGetRestaurant($client){
     $empParam = new Restaurant\empty_param();
     $restaurants = $client->GetRestaurant($empParam)->responses();
-    echo "Get request sent to go service";
+    // echo "Get request sent to go service";
     $decoded_restaurants = array();
     foreach($restaurants as $restaurant){
         $decoded_restaurant = decodeRestuarant($restaurant);

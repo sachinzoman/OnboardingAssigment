@@ -23,7 +23,7 @@ COPY . .
 #Generate stubs
 # RUN chmod +x restaurant_proto_gen.sh && ./restaurant_proto_gen.sh
 ENV ENV docker
-EXPOSE 4000/tcp
+EXPOSE 4000
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o restaurant_server
 ENTRYPOINT ["./restaurant_server"]
