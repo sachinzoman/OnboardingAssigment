@@ -11,6 +11,7 @@
 ### MySQL
 * Create `restaurantDB` database with username:password `jarvis:jarvis123`
 * Create `restaurant` table in `restaurantDB`
+* Run commands in `db_init.sql` 
 
 ## Docker container
 * `docker-compose build`
