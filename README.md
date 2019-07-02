@@ -8,6 +8,11 @@
 * Communication between PHP API and Golagn Service is happeing using gRPC and Protocol buffer
 
 ## Setup
+### MySQL
+* Create `restaurantDB` database with username:password `jarvis:jarvis123`
+* Create `restaurant` table in `restaurantDB`
+
+## Docker container
 * `docker-compose build`
 * `docker-compose up`
 
